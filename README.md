@@ -44,8 +44,7 @@ Content-Type: application/json
 
 ```json
 
-{
-  "elements": [
+ [
     {
       "value": "Hello, 123 world!",
       "transformers": [
@@ -69,14 +68,14 @@ Content-Type: application/json
       ]
     }
   ]
-}
+
 ```
 #### Example Response
    ```json
 
    {
      "originalValue": "Hello, 123 world!",
-     "transformedValue": "Hello, universe!"
+     "transformedValue": "Hello,  universe!"
    }
    ```
 ### Running Tests
