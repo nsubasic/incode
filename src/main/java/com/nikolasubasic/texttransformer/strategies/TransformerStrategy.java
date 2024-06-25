@@ -1,4 +1,4 @@
-package com.nikolasubasic.texttransformer.model;
+package com.nikolasubasic.texttransformer.strategies;
 
 import java.util.Map;
 

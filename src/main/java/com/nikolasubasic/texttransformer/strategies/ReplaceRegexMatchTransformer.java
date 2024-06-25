@@ -1,4 +1,4 @@
-package com.nikolasubasic.texttransformer.model;
+package com.nikolasubasic.texttransformer.strategies;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

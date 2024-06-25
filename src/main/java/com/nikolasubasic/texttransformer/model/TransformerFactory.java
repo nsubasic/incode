@@ -1,5 +1,6 @@
 package com.nikolasubasic.texttransformer.model;
 
+import com.nikolasubasic.texttransformer.strategies.TransformerStrategy;
 import org.springframework.stereotype.Component;
 import java.util.Map;
 
