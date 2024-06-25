@@ -14,7 +14,6 @@ This project is a web application built using Spring Boot that allows for transf
 
 1. Open your terminal or command prompt.
 2. Run the following command to clone the repository:
-
    ```sh
    git clone https://github.com/nsubasic/incode.git
    cd text-transformer
@@ -31,8 +30,8 @@ The application will start on http://localhost:8080.
 
 ### Accessing the API Documentation
 Once the application is running, you can access the API documentation at:
-    ```sh
-   http://localhost:8080/swagger-ui/index.html
+
+    http://localhost:8080/swagger-ui/index.html
 
 ### Example API Request
 
