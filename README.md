@@ -16,5 +16,5 @@ This project is a web application built using Spring Boot that allows for transf
 2. Run the following command to clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/text-transformer.git
+   git clone https://github.com/nsubasic/incode.git
    cd text-transformer
