@@ -29,3 +29,58 @@ This project is a web application built using Spring Boot that allows for transf
    ./gradlew bootRun
 The application will start on http://localhost:8080.
 
+### Accessing the API Documentation
+Once the application is running, you can access the API documentation at:
+    ```sh
+   http://localhost:8080/swagger-ui/index.html
+
+### Example API Request
+
+You can use tools like curl, Postman, or any HTTP client to make a POST request to transform elements.
+
+#### Example JSON Payload
+POST /transform
+
+Content-Type: application/json
+
+```json
+
+{
+  "elements": [
+    {
+      "value": "Hello, 123 world!",
+      "transformers": [
+        {
+          "transformerId": "removeRegex",
+          "parameters": {
+            "regex": "\\d+"
+          }
+        },
+        {
+          "transformerId": "replaceRegex",
+          "parameters": {
+            "regex": "world",
+            "replacement": "универсе"
+          }
+        },
+        {
+          "transformerId": "transliterate",
+          "parameters": {}
+        }
+      ]
+    }
+  ]
+}
+```
+#### Example Response
+   ```json
+
+   {
+     "originalValue": "Hello, 123 world!",
+     "transformedValue": "Hello, universe!"
+   }
+   ```
+### Running Tests
+To run the tests, use the following command:
+```sh
+./gradlew test
