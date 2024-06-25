@@ -1,6 +1,7 @@
 package com.nikolasubasic.texttransformer.service;
 
 import com.nikolasubasic.texttransformer.model.*;
+import com.nikolasubasic.texttransformer.strategies.TransformerStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -21,6 +22,7 @@ public class TransformerServiceTest {
     private static final String TEST_VALUE_AFTER_REPLACEMENT = "replacementForTest_ИнДифферентАлпхабет";
     private static final String TEST_VALUE_TRANSLITERATED = "replacementForTest_InDifferentAlphabet";
     private static final String TEST_VALUE_NOT_FOR_TRANSFORMATION = "value not to be transformed";
+    private static final String TEST_NON_EXISTANT_TRANSFORMER = "nonExistantTransformerId";
 
     @Mock
     private TransformerFactory transformerFactory;
@@ -66,6 +68,49 @@ public class TransformerServiceTest {
         assertTrue(results.isEmpty());
     }
 
+    @Test
+    void testTransformElementsWithNullTransformersList() {
+        Element element = new Element();
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> transformerService.transformElements(Collections.singletonList(element))
+        );
+
+        assertEquals("Transformers list cannot be null", exception.getMessage());
+    }
+
+    @Test
+    void testApplyTransformersWithMissingStrategy() {
+        Element element = createElementWithNonExistingTransformer();
+
+        when(transformerFactory.getTransformer(TEST_NON_EXISTANT_TRANSFORMER)).thenReturn(null);
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> transformerService.transformElements(Collections.singletonList(element))
+        );
+
+        assertTrue(exception.getMessage().contains(String.format("No transformation strategy found for ID: %s", TEST_NON_EXISTANT_TRANSFORMER)));
+    }
+
+
+    @Test
+    void testApplyTransformersExceptionDuringTransformation() {
+        Element element = createElementWithAllTransformers();
+        TransformerStrategy strategy = mock(TransformerStrategy.class);
+
+        when(transformerFactory.getTransformer(REPLACE_REGEX_TRANSFORMER)).thenReturn(strategy);
+        when(strategy.transform(anyString(), any())).thenThrow(new RuntimeException("Transformation failed"));
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> transformerService.transformElements(Collections.singletonList(element))
+        );
+
+        assertTrue(exception.getMessage().contains(String.format("Error during transformation for transformer ID: %s", REPLACE_REGEX_TRANSFORMER)));
+    }
+
     private Element createElementWithAllTransformers() {
         Transformer removeRegexTransformer = getTransformer(REMOVE_REGEX_TRANSFORMER, TEST_REGEX_UPPER);
         Transformer replaceRegexTransformer = getTransformer(REPLACE_REGEX_TRANSFORMER, TEST_REGEX_LOWER);
@@ -97,5 +142,17 @@ public class TransformerServiceTest {
         transformer.setParameters(parameters);
         transformer.setGroupId(TEST_GROUP_ID);
         return transformer;
+    }
+
+    private Element createElementWithNonExistingTransformer() {
+        Transformer transformer = new Transformer();
+        transformer.setTransformerId(TEST_NON_EXISTANT_TRANSFORMER);
+        transformer.setParameters(null);
+
+        Element element = new Element();
+        element.setTransformers(Collections.singletonList(transformer));
+        element.setValue(TEST_VALUE);
+
+        return element;
     }
 }

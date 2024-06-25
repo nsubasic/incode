@@ -1,6 +1,8 @@
 package com.nikolasubasic.texttransformer.service;
 
 import com.nikolasubasic.texttransformer.model.*;
+import com.nikolasubasic.texttransformer.strategies.ReplaceRegexMatchTransformer;
+import com.nikolasubasic.texttransformer.strategies.TransformerStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +54,7 @@ public class TransformerServiceImpl implements TransformerService {
             if (transformerStrategy == null) {
                 String errorMessage = String.format("No transformation strategy found for ID: %s", transformer.getTransformerId());
                 logger.error(errorMessage);
-                throw new IllegalStateException(errorMessage);
+                throw new IllegalArgumentException(errorMessage);
             }
 
             try {

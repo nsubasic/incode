@@ -10,8 +10,8 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class TextTransformerExceptionHandler {
 
-    @ExceptionHandler(IllegalStateException.class)
-    public ResponseEntity<ApiError> handleIllegalStateException(IllegalStateException ex, WebRequest request) {
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiError> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
 
         Logger logger = LoggerFactory.getLogger(TextTransformerExceptionHandler.class);
         logger.error("Error: ", ex);
