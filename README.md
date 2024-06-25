@@ -18,3 +18,14 @@ This project is a web application built using Spring Boot that allows for transf
    ```sh
    git clone https://github.com/nsubasic/incode.git
    cd text-transformer
+
+### Build and Run the Project
+
+1. Build the project using Gradle:
+   ```sh
+   ./gradlew clean build
+2. Run the application:
+   ```sh
+   ./gradlew bootRun
+The application will start on http://localhost:8080.
+
