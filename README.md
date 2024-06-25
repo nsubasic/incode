@@ -78,6 +78,23 @@ Content-Type: application/json
      "transformedValue": "Hello,  universe!"
    }
    ```
+### Parameters Field in Transformer
+
+The `parameters` field in the Transformer is a `Map<String, String>` used to pass additional information required by the transformers.
+
+- When `transformerId` is `removeRegex`, the `parameters` map should have a key `"regex"` which specifies the regex pattern to remove.
+- When `transformerId` is `replaceRegex`, the `parameters` map should have keys `"regex"` and `"replacement"` which specify the regex pattern to replace and the replacement string, respectively.
+- The `parameters` map exists but is not used when `transformerId` is `transliterate`.
+
+### Transformer Strategy
+
+The `transformerId` in the Transformer is used to determine the `TransformerStrategy`, which indicates which transformer will be used. The application supports three types of transformers:
+
+- `removeRegex`: Removes matches of the specified regex from the string value.
+- `replaceRegex`: Replaces matches of the specified regex with the provided replacement.
+- `transliterate`: Transliterates Cyrillic and Greek letters to Latin.
+
+
 ### Running Tests
 To run the tests, use the following command:
 ```sh
