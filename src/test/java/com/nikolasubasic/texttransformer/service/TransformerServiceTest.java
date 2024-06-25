@@ -94,7 +94,6 @@ public class TransformerServiceTest {
         assertTrue(exception.getMessage().contains(String.format("No transformation strategy found for ID: %s", TEST_NON_EXISTANT_TRANSFORMER)));
     }
 
-
     @Test
     void testApplyTransformersExceptionDuringTransformation() {
         Element element = createElementWithAllTransformers();
