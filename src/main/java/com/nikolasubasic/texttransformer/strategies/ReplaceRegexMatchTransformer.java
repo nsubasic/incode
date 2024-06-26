@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import static com.nikolasubasic.texttransformer.util.Constants.PARAM_REGEX;
-import static com.nikolasubasic.texttransformer.util.Constants.PARAM_REPLACEMENT;
+import static com.nikolasubasic.texttransformer.utils.Constants.PARAM_REGEX;
+import static com.nikolasubasic.texttransformer.utils.Constants.PARAM_REPLACEMENT;
 
 @Component("replaceRegex")
 public class ReplaceRegexMatchTransformer implements TransformerStrategy {

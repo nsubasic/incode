@@ -1,6 +1,6 @@
 package com.nikolasubasic.texttransformer.strategies;
 
-import com.nikolasubasic.texttransformer.util.TransliterationHelper;
+import com.nikolasubasic.texttransformer.utils.TransliterationHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
