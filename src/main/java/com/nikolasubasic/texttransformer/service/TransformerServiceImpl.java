@@ -59,7 +59,7 @@ public class TransformerServiceImpl implements TransformerService {
 
             try {
                 transformedValue = transformerStrategy.transform(transformedValue, transformer.getParameters());
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 String errorContext = String.format("Error during transformation for transformer ID: %s", transformer.getTransformerId());
                 logger.error(errorContext, e);
                 throw new RuntimeException(errorContext, e);
