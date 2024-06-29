@@ -100,7 +100,7 @@ public class TransformerServiceTest {
         TransformerStrategy strategy = mock(TransformerStrategy.class);
 
         when(transformerFactory.getTransformer(REPLACE_REGEX_TRANSFORMER)).thenReturn(strategy);
-        when(strategy.transform(anyString(), any())).thenThrow(new RuntimeException("Transformation failed"));
+        when(strategy.transform(anyString(), any())).thenThrow(new IllegalArgumentException("Transformation failed"));
 
         RuntimeException exception = assertThrows(
                 RuntimeException.class,
