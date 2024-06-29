@@ -1,4 +1,4 @@
-package com.nikolasubasic.texttransformer.util;
+package com.nikolasubasic.texttransformer.utils;
 
 public class Constants {
     public static final String PARAM_REGEX = "regex";

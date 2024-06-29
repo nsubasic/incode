@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import static com.nikolasubasic.texttransformer.util.Constants.PARAM_REGEX;
+import static com.nikolasubasic.texttransformer.utils.Constants.PARAM_REGEX;
 
 @Component("removeRegex")
 public class RemoveRegexMatchTransformer implements TransformerStrategy {
@@ -30,6 +30,7 @@ public class RemoveRegexMatchTransformer implements TransformerStrategy {
         }
 
         Pattern pattern;
+
         try {
             pattern = Pattern.compile(regex);
         } catch (PatternSyntaxException e) {

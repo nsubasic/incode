@@ -1,4 +1,4 @@
-package com.nikolasubasic.texttransformer.util;
+package com.nikolasubasic.texttransformer.utils;
 
 import java.util.HashMap;
 import java.util.Map;
